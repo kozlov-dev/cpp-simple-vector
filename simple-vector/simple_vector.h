@@ -374,10 +374,7 @@ public:
         assert(size_);
         auto n = std::distance(begin(), Iterator(pos));
         std::copy(std::make_move_iterator(begin() + n + 1), std::make_move_iterator(end()), begin() + n);
-        // if (size_ > 0)
-        // {
         --size_;
-        // }
         return begin() + n;
     }
 
