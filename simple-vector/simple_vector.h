@@ -146,14 +146,14 @@ public:
     // Возвращает ссылку на элемент с индексом index
     Type &operator[](size_t index) noexcept
     {
-        assert(size_);
+        assert(size_ != 0);
         return items_[index];
     }
 
     // Возвращает константную ссылку на элемент с индексом index
     const Type &operator[](size_t index) const noexcept
     {
-        assert(size_);
+        assert(size_ != 0);
         return items_[index];
     }
 
@@ -363,7 +363,7 @@ public:
     // "Удаляет" последний элемент вектора. Вектор не должен быть пустым
     void PopBack() noexcept
     {
-        assert(size_);
+        assert(size_ != 0);
         --size_;
     }
 
@@ -371,7 +371,7 @@ public:
     Iterator Erase(ConstIterator pos)
     {
         assert(begin() <= pos && pos < end());
-        assert(size_);
+        assert(size_ != 0);
         auto n = std::distance(begin(), Iterator(pos));
         std::copy(std::make_move_iterator(begin() + n + 1), std::make_move_iterator(end()), begin() + n);
         --size_;
